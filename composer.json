@@ -1,0 +1,12 @@
+{
+    "name": "wrdmapg/learning_php_image-workshop",
+    "authors": [
+        {
+            "name": "admin",
+            "email": "admin.admin@gmail.com"
+        }
+    ],
+    "require": {
+        "sybio/image-workshop": "^2.1"
+    }
+}

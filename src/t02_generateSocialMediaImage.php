@@ -13,13 +13,19 @@ $layer->applyFilter(IMG_FILTER_BRIGHTNESS, 10, null, null, null, true); // brigh
 $text = "This is a test text";
 $date = date("Y-m-d");
 
-$font = 5; // Internal font number (http://php.net/manual/en/function.imagestring.php)
+$font = __DIR__.'\fonts\Montserrat-Bold.ttf'; // Internal font number (http://php.net/manual/en/function.imagestring.php)
+$size = 100;
 $color = "ffffff";
-$positionX = 0;
-$positionY = 0;
-$align = "horizontal";
+$align = "center";
+$width = $layer->getWidth(); // in pixel
+$height = $layer->getHeight(); //
+$positionX = intval($width / 2);
+$positionY = intval($height / 2);
 
-$layer->writeText($text, $font, $color, $positionX, $positionY, $align);
+// $layer->writeText($text, $font, $size, $color, $positionX, $positionY, $align);
+$textLayer = ImageWorkshop::initTextLayer($text, $font, $size, $color, 0, 0);
+$layer->addLayer(1, $textLayer, 0, 0, 'MM');
+
 
 // Saving / showing...
 $layer->save(__DIR__.'/output/', 'bank.jpg', true, null, 95);
